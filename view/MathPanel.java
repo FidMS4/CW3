@@ -2,6 +2,7 @@ package view;
 
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.border.*;
 
 import controller.ButtonListener;
 
@@ -11,6 +12,7 @@ public class MathPanel {
 	private JButton derivButton = new JButton("Derivatives");
 	private JButton limButton = new JButton("Limits");
 	private JRadioButton[] choiceButtons;
+	//String[] choiceLetters = {"a.", "b.", "c.", "d."};
 
 	private JButton submitButton = new JButton("Submit");
 
@@ -24,8 +26,8 @@ public class MathPanel {
 		Container cp = window.getContentPane();
 
 		JPanel panel = new JPanel();
-		panel.setLayout(new GridLayout(1, 5));
-		cp.add(BorderLayout.SOUTH, panel);
+		panel.setLayout(new GridLayout(1, 4));
+		cp.add(BorderLayout.CENTER, panel);
 
 		ButtonListener listener = new ButtonListener(this);
 
@@ -36,15 +38,29 @@ public class MathPanel {
 			choiceButtons[i].addActionListener(listener);
 		}
 
-		JPanel rightSide = new JPanel();
-		rightSide.add(submitButton);
-		submitButton.setPreferredSize(new Dimension(100, 400));
-		cp.add(BorderLayout.EAST, rightSide);
+		TitledBorder title = BorderFactory.createTitledBorder("Choices");
+		panel.setBorder(title);
+
+		JPanel sPanel = new JPanel();
+		sPanel.setLayout(new GridLayout(1, 4));
+		cp.add(BorderLayout.SOUTH, sPanel);
+
+		sPanel.add(intButton);
+		sPanel.add(derivButton);
+		sPanel.add(limButton);
+
+		
+		TitledBorder buttonTitle = BorderFactory.createTitledBorder("Problem Types");
+		sPanel.setBorder(buttonTitle);
+
+		JPanel ePanel = new JPanel();
+		ePanel.add(submitButton);
+		submitButton.setPreferredSize(new Dimension(100, 100));
+		submitButton.addActionListener(listener);
+		cp.add(BorderLayout.EAST, ePanel);
 
 		canvas = new MathCanvas(this);
-		cp.add(BorderLayout.CENTER, canvas);
-
-		submitButton.addActionListener(listener);
+		cp.add(BorderLayout.NORTH, canvas);
 
 	}
 

@@ -14,7 +14,7 @@ public class MathCanvas extends JPanel {
 
 	public MathCanvas(MathPanel panel) {
 		this.panel = panel;
-		setPreferredSize(new Dimension(350, 400));
+		setPreferredSize(new Dimension(400, 400));
 		setBackground(Color.GREEN);
 	}
 	
