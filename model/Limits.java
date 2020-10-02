@@ -28,11 +28,7 @@ public class Limits extends Math {
 	@Override
 	public void render(Graphics2D g2) {
 		super.render(g2);
-		g2.setBackground(Color.green);
 		g2.setColor(Color.white);
-
-		g2.drawLine(50, 75, 50, 75);
-
 		g2.setFont(new Font("courier", Font.BOLD, 12));
 		int no = 1;
 		for (var c: choices) {

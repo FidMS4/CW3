@@ -15,7 +15,7 @@ public class MathCanvas extends JPanel {
 	public MathCanvas(MathPanel panel) {
 		this.panel = panel;
 		setPreferredSize(new Dimension(400, 400));
-		setBackground(Color.GREEN);
+		setBackground(Color.BLACK);
 	}
 	
 	@Override
@@ -25,8 +25,14 @@ public class MathCanvas extends JPanel {
 		Graphics2D g2 = (Graphics2D) g;
 
 		if (questionIndex >= 0) {
-			Math q = MathQuestions.bank.get(questionIndex);
-			q.render(g2);
+			Math set1 = MathQuestions.intBank.get(questionIndex);
+			set1.render(g2);
+		} else if (questionIndex >= 3) {
+			Math set2 = MathQuestions.derivBank.get(questionIndex);
+			set2.render(g2);
+		} else if (questionIndex >= 6) {
+			Math set3 = MathQuestions.limBank.get(questionIndex);
+			set3.render(g2);
 		}
 	}
 

@@ -9,7 +9,7 @@ public class GamePlay {
 
 	public GamePlay(JFrame window) {
 		this.window = window;
-		window.setTitle("Welcome to Quick Mafs");
+		window.setTitle("Welcome to Quick Maths");
 	}
 
 	public void start() {
@@ -17,7 +17,7 @@ public class GamePlay {
 		JPanel panel = new JPanel();
 		panel.setPreferredSize(new Dimension(350, 225));
 	
-		JButton startButton = new JButton("Quick Mafs");
+		JButton startButton = new JButton("Quick Maths");
 		startButton.setPreferredSize(new Dimension(400, 225));
 		panel.add(startButton);
 		cp.add(BorderLayout.CENTER, panel);
