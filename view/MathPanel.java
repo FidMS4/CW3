@@ -52,6 +52,7 @@ public class MathPanel {
 
 		JPanel ePanel = new JPanel();
 		ePanel.add(submitButton);
+		submitButton.setEnabled(false);
 		submitButton.setPreferredSize(new Dimension(100, 100));
 		cp.add(BorderLayout.EAST, ePanel);
 
@@ -95,6 +96,10 @@ public class MathPanel {
 
 	public JButton getLimitButton() {
 		return limButton;
+	}
+
+	public JButton getSubmitButton() {
+		return submitButton;
 	}
 
 	public JFrame getWindow() {

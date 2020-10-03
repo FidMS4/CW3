@@ -16,7 +16,7 @@ public class MathQuestions {
 		q1.addChoice("48x^2 + C");
 		q1.addChoice("4x^2 + C");
 
-		var q2 = new Integrals("What is the integral of 1/x?", 4);
+		var q2 = new Integrals("What is the integral of 1 / x?", 4);
 		q2.addChoice("x/x^2 + C");
 		q2.addChoice("ln + C");
 		q2.addChoice("e^x + C");
@@ -48,27 +48,34 @@ public class MathQuestions {
 		q6.addChoice("3x^2(e^x) + 3x^2(e^x)");
 
 		// limits
-		var q7 = new Limits("What is the limit as x goes to infinity of ?", 2);
-		q7.addChoice("");
-		q7.addChoice("");
-		q7.addChoice("");
-		q7.addChoice("");
+		var q7 = new Limits("What is the limit as x goes to 0 of x^2 / 3x^2?", 4);
+		q7.addChoice("0");
+		q7.addChoice("1");
+		q7.addChoice("3");
+		q7.addChoice("1/3");
 
-		var q8 = new Limits("What is limit as x goes to infinity of ?", 2);
-		q8.addChoice("");
-		q8.addChoice("");
-		q8.addChoice("");
-		q8.addChoice("");
+		var q8 = new Limits("What is limit as x goes to infinity of 56 / x^4 + 6x?", 3);
+		q8.addChoice("inf");
+		q8.addChoice("-inf");
+		q8.addChoice("0");
+		q8.addChoice("1");
 
-		var q9 = new Limits("What is limit as x goes to infinity of ?", 2);
-		q9.addChoice("");
-		q9.addChoice("");
-		q9.addChoice("");
-		q9.addChoice("");
+		var q9 = new Limits("What is limit as x goes to infinity of 2x^2+6x / 3x+24?", 2);
+		q9.addChoice("2/3");
+		q9.addChoice("inf");
+		q9.addChoice("0");
+		q9.addChoice("1/4");
 
 		intBank.add(q1);
 		intBank.add(q2);
 		intBank.add(q3);
+		// intBank.add(q4);
+		// intBank.add(q5);
+		// intBank.add(q6);
+		// intBank.add(q7);
+		// intBank.add(q8);
+		// intBank.add(q9);
+
 		derivBank.add(q4);
 		derivBank.add(q5);
 		derivBank.add(q6);

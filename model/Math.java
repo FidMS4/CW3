@@ -21,9 +21,9 @@ public class Math {
 	}
 
 	public void render(Graphics2D g2) {
-		g2.setColor(Color.yellow);
-		g2.setFont(new Font("courier", Font.BOLD, 14));
-		g2.drawString(text, 50, 100);
+		g2.setColor(Color.white);
+		g2.setFont(new Font("courier", Font.BOLD, 18));
+		g2.drawString(text, 12, 100);
 	}
 
 }

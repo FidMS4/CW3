@@ -3,7 +3,6 @@ package controller;
 import java.awt.event.*;
 import javax.swing.*;
 
-import model.MathQuestions;
 import view.MathPanel;
 
 public class ButtonListener implements ActionListener {
@@ -18,6 +17,7 @@ public class ButtonListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		Object source = e.getSource();
+
 		if (source == panel.getIntegralButton()) {
 			int index = panel.getCanvas().getQuestionIndex();
 			++index;
@@ -28,63 +28,51 @@ public class ButtonListener implements ActionListener {
 			panel.getCanvas().repaint();
 
 		} else if (source == panel.getDerivativeButton()) {
-			int index = panel.getCanvas().getQuestionIndex();
-			
-			++index;
-			if (index == 6) {
-				index = 3;
+			int derivIndex = panel.getCanvas().getDerivQuestionIndex();
+			++derivIndex;
+			if (derivIndex == 3) {
+				derivIndex = 0;
 			}
-			panel.getCanvas().setQuestionIndex(index);
+			panel.getCanvas().setDerivQuestionIndex(derivIndex);
 			panel.getCanvas().repaint();
 			
 		} else if (source == panel.getLimitButton()) {
-			int index = panel.getCanvas().getQuestionIndex();
-			
-			++index;
-			if (index == 9) {
-				index = 6;
+			int limIndex = panel.getCanvas().getLimQuestionIndex();
+			++limIndex;
+			if (limIndex == 3) {
+				limIndex = 0;
 			}
-			panel.getCanvas().setQuestionIndex(index);
+			panel.getCanvas().setLimQuestionIndex(limIndex);
 			panel.getCanvas().repaint();
 
 		} else if (source == panel.getAButton()) {
-			
+			panel.getSubmitButton().setEnabled(true);
 
 		} else if (source == panel.getBButton()) {
-			
+			panel.getSubmitButton().setEnabled(true);
 
 		} else if (source == panel.getCButton()) {
-			
+			panel.getSubmitButton().setEnabled(true);
 
 		} else if (source == panel.getDButton()) {
+			panel.getSubmitButton().setEnabled(true);
+
+
+		} else if (source == panel.getSubmitButton()) {
+			int index = panel.getCanvas().getQuestionIndex();
+			// if (index < 0) {
+			// 	JOptionPane.showMessageDialog(panel.getWindow(), "Pick a set of questions first");
+			// 	return;
+			// }
+		// 	String response = Button.getText();
 			
-		}
-
-
-		// } else if (button == panel.getPrevButton()) {
-		// 	int index = panel.getCanvas().getQuestionIndex();
-		// 	--index;
-		// 	if (index < 0) {
-		// 		index = QuestionBank.database.size()-1;
-		// 	}
-		// 	panel.getCanvas().setQuestionIndex(index);
-		// 	panel.getCanvas().repaint();
-		// } else if (button == panel.getEnterButton()) {
-		// 	int index = panel.getCanvas().getQuestionIndex();
-		// 	if (index < 0) {
-		// 		JOptionPane.showMessageDialog(panel.getWindow(), "No question presented yet");
-		// 		return;
-		// 	}
-		// 	String response = panel.getAnswerField().getText();
-		// 	String message;
 		// 	if (QuestionBank.database.get(index).checkAnswer(response)) {
 		// 		message = response + ": Correct answer!";
 		// 	} else {
 		// 		message = response + ": Wrong answer!";
 		// 	}
 		// 	JOptionPane.showMessageDialog(panel.getWindow(), message);
-		// 	panel.getAnswerField().setText("");
-		//}
+		 }
+		}
 
-	}
 }

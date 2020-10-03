@@ -28,11 +28,15 @@ public class Derivatives extends Math {
 	@Override
 	public void render(Graphics2D g2) {
 		super.render(g2);
+		g2.setColor(Color.red);
+		g2.setFont(new Font("courier", Font.BOLD, 35));
+		g2.drawString("Derivatives", 160, 50);
+
 		g2.setColor(Color.white);
-		g2.setFont(new Font("courier", Font.BOLD, 12));
+		g2.setFont(new Font("courier", Font.BOLD, 17));
 		int no = 1;
 		for (var c: choices) {
-			g2.drawString(no + ". " + c, 80, no * 50 + 100);
+			g2.drawString(no + ". " + c, 14, no * 50 + 100);
 			++no;
 		}
 	}
