@@ -4,18 +4,19 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import model.MathQuestions;
+import view.MathCanvas;
 import view.MathPanel;
 import view.MathPanel.QuestionState;
 
 public class ButtonListener implements ActionListener {
 
 	private MathPanel panel;
+	Math math;
 	int selectedAnswer = 0;
 
 	public ButtonListener(MathPanel panel) {
 		this.panel = panel;
 	}
-
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -69,6 +70,7 @@ public class ButtonListener implements ActionListener {
 			selectedAnswer = 4;
 
 		} else if (source == panel.getSubmitButton()) {
+
 			int index = panel.getCanvas().getQuestionIndex();
 			int derivIndex = panel.getCanvas().getDerivQuestionIndex();
 			int limIndex = panel.getCanvas().getLimQuestionIndex();
@@ -78,32 +80,39 @@ public class ButtonListener implements ActionListener {
 				String message;
 				if (MathQuestions.intBank.get(index).checkAnswer(selectedAnswer)) {
 					message = selectedAnswer + " is correct";
+					MathCanvas.correctTries++;
 				} else {
 					message = selectedAnswer + " is wrong";
+					MathCanvas.incorrectTries++;
 				}
 				JOptionPane.showMessageDialog(panel.getWindow(), message);
+
 			}	
 
 			else if (state == QuestionState.DERIVATIVE) {
 				String message;
 				if (MathQuestions.derivBank.get(derivIndex).checkAnswer(selectedAnswer)) {
 					message = selectedAnswer + " is correct";
+					MathCanvas.correctTries++;
 				} else {
 					message = selectedAnswer + " is wrong";
+					MathCanvas.incorrectTries++;
 				}
 				JOptionPane.showMessageDialog(panel.getWindow(), message);
 			}
 
 			else  {
-				//state = QuestionState.LIMIT;
 				String message;
 				if (MathQuestions.limBank.get(limIndex).checkAnswer(selectedAnswer)) {
 					message = selectedAnswer + " is correct";
+					MathCanvas.correctTries++;
 				} else {
 					message = selectedAnswer + " is wrong";
+					MathCanvas.incorrectTries++;
 				}
 				JOptionPane.showMessageDialog(panel.getWindow(), message);
 			}
+			panel.getCanvas().repaint();
 		}
 	}
 

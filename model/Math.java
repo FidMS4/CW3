@@ -12,7 +12,6 @@ public class Math {
 		this.answer = answer;
 	}
 
-
 	public boolean checkAnswer(int response) {
 		return response == answer;
 	}
