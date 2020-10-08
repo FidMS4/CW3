@@ -12,8 +12,9 @@ public class Math {
 		this.answer = answer;
 	}
 
-	public boolean checkAnswer(String response) {
-		return Integer.parseInt(response) == answer;
+
+	public boolean checkAnswer(int response) {
+		return response == answer;
 	}
 
 	public void display() {

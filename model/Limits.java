@@ -29,13 +29,14 @@ public class Limits extends Math {
 	public void render(Graphics2D g2) {
 		super.render(g2);
 
-		g2.setColor(Color.red);
+		g2.setColor(Color.green);
 		g2.setFont(new Font("courier", Font.BOLD, 35));
 		g2.drawString("Limits", 175, 50);
 
 		g2.setColor(Color.white);
 		g2.setFont(new Font("courier", Font.BOLD, 17));
 		int no = 1;
+
 		for (var c: choices) {
 			g2.drawString(no + ". " + c, 14, no * 50 + 100);
 			++no;

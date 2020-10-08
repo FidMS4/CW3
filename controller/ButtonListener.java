@@ -3,15 +3,19 @@ package controller;
 import java.awt.event.*;
 import javax.swing.*;
 
+import model.MathQuestions;
 import view.MathPanel;
+import view.MathPanel.QuestionState;
 
 public class ButtonListener implements ActionListener {
 
 	private MathPanel panel;
+	int selectedAnswer = 0;
 
 	public ButtonListener(MathPanel panel) {
 		this.panel = panel;
 	}
+
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -19,6 +23,7 @@ public class ButtonListener implements ActionListener {
 		Object source = e.getSource();
 
 		if (source == panel.getIntegralButton()) {
+			panel.setQuestionState(QuestionState.INTEGRAL);
 			int index = panel.getCanvas().getQuestionIndex();
 			++index;
 			if (index == 3) {
@@ -28,6 +33,7 @@ public class ButtonListener implements ActionListener {
 			panel.getCanvas().repaint();
 
 		} else if (source == panel.getDerivativeButton()) {
+			panel.setQuestionState(QuestionState.DERIVATIVE);
 			int derivIndex = panel.getCanvas().getDerivQuestionIndex();
 			++derivIndex;
 			if (derivIndex == 3) {
@@ -37,6 +43,7 @@ public class ButtonListener implements ActionListener {
 			panel.getCanvas().repaint();
 			
 		} else if (source == panel.getLimitButton()) {
+			panel.setQuestionState(QuestionState.LIMIT);
 			int limIndex = panel.getCanvas().getLimQuestionIndex();
 			++limIndex;
 			if (limIndex == 3) {
@@ -45,34 +52,59 @@ public class ButtonListener implements ActionListener {
 			panel.getCanvas().setLimQuestionIndex(limIndex);
 			panel.getCanvas().repaint();
 
-		} else if (source == panel.getAButton()) {
+		} else if (source == panel.getOneButton()) {
 			panel.getSubmitButton().setEnabled(true);
+			selectedAnswer = 1;
 
-		} else if (source == panel.getBButton()) {
+		} else if (source == panel.getTwoButton()) {
 			panel.getSubmitButton().setEnabled(true);
+			selectedAnswer = 2;
 
-		} else if (source == panel.getCButton()) {
+		} else if (source == panel.getThreeButton()) {
 			panel.getSubmitButton().setEnabled(true);
+			selectedAnswer = 3;
 
-		} else if (source == panel.getDButton()) {
+		} else if (source == panel.getFourButton()) {
 			panel.getSubmitButton().setEnabled(true);
-
+			selectedAnswer = 4;
 
 		} else if (source == panel.getSubmitButton()) {
 			int index = panel.getCanvas().getQuestionIndex();
-			// if (index < 0) {
-			// 	JOptionPane.showMessageDialog(panel.getWindow(), "Pick a set of questions first");
-			// 	return;
-			// }
-		// 	String response = Button.getText();
-			
-		// 	if (QuestionBank.database.get(index).checkAnswer(response)) {
-		// 		message = response + ": Correct answer!";
-		// 	} else {
-		// 		message = response + ": Wrong answer!";
-		// 	}
-		// 	JOptionPane.showMessageDialog(panel.getWindow(), message);
-		 }
+			int derivIndex = panel.getCanvas().getDerivQuestionIndex();
+			int limIndex = panel.getCanvas().getLimQuestionIndex();
+			MathPanel.QuestionState state = panel.getQuestionState();
+
+			if (state == QuestionState.INTEGRAL) {
+				String message;
+				if (MathQuestions.intBank.get(index).checkAnswer(selectedAnswer)) {
+					message = selectedAnswer + " is correct";
+				} else {
+					message = selectedAnswer + " is wrong";
+				}
+				JOptionPane.showMessageDialog(panel.getWindow(), message);
+			}	
+
+			else if (state == QuestionState.DERIVATIVE) {
+				String message;
+				if (MathQuestions.derivBank.get(derivIndex).checkAnswer(selectedAnswer)) {
+					message = selectedAnswer + " is correct";
+				} else {
+					message = selectedAnswer + " is wrong";
+				}
+				JOptionPane.showMessageDialog(panel.getWindow(), message);
+			}
+
+			else  {
+				//state = QuestionState.LIMIT;
+				String message;
+				if (MathQuestions.limBank.get(limIndex).checkAnswer(selectedAnswer)) {
+					message = selectedAnswer + " is correct";
+				} else {
+					message = selectedAnswer + " is wrong";
+				}
+				JOptionPane.showMessageDialog(panel.getWindow(), message);
+			}
 		}
+	}
 
 }

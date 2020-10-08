@@ -1,11 +1,10 @@
 package view;
 
 import javax.swing.*;
+import java.awt.*;
 
 import model.Math;
 import model.MathQuestions;
-
-import java.awt.*;
 
 public class MathCanvas extends JPanel {
 
@@ -19,20 +18,25 @@ public class MathCanvas extends JPanel {
 		setPreferredSize(new Dimension(500, 350));
 		setBackground(Color.black);
 	}
-	
+
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
 		Graphics2D g2 = (Graphics2D) g;
 
-		if (questionIndex >= 0) {
+		MathPanel.QuestionState state = panel.getQuestionState();
+
+		if (questionIndex >= 0 && state == MathPanel.QuestionState.INTEGRAL) {
 			Math set1 = MathQuestions.intBank.get(questionIndex);
 			set1.render(g2);
-		} else if (derivQuestionIndex >= 0) {
+
+		} else if (derivQuestionIndex >= 0 && state == MathPanel.QuestionState.DERIVATIVE) {
 			Math set2 = MathQuestions.derivBank.get(derivQuestionIndex);
 			set2.render(g2);
-		} else if (limQuestionIndex >= 0) {
+
+		} else if (limQuestionIndex >= 0 && state == MathPanel.QuestionState.LIMIT) {
+			
 			Math set3 = MathQuestions.limBank.get(limQuestionIndex);
 			set3.render(g2);
 		}

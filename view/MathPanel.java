@@ -8,15 +8,20 @@ import controller.ButtonListener;
 
 public class MathPanel {
 
+	public enum QuestionState {
+		INTEGRAL, DERIVATIVE, LIMIT
+	}
+
 	private JFrame window;
 	private JButton intButton = new JButton("Integrals");
 	private JButton derivButton = new JButton("Derivatives");
 	private JButton limButton = new JButton("Limits");
-	private JRadioButton aButton = new JRadioButton("a.");
-	private JRadioButton bButton = new JRadioButton("b.");
-	private JRadioButton cButton = new JRadioButton("c.");
-	private JRadioButton dButton = new JRadioButton("d.");
+	private JRadioButton oneButton = new JRadioButton("1");
+	private JRadioButton twoButton = new JRadioButton("2");
+	private JRadioButton threeButton = new JRadioButton("3");
+	private JRadioButton fourButton = new JRadioButton("4");
 	private JButton submitButton = new JButton("Submit");
+	private QuestionState qState;
 
 	private MathCanvas canvas;
 
@@ -31,10 +36,16 @@ public class MathPanel {
 		panel.setLayout(new GridLayout(1, 4));
 		cp.add(BorderLayout.CENTER, panel);
 
-		panel.add(aButton);
-		panel.add(bButton);
-		panel.add(cButton);
-		panel.add(dButton);
+		panel.add(oneButton);
+		panel.add(twoButton);
+		panel.add(threeButton);
+		panel.add(fourButton);
+
+		ButtonGroup choiceGroup = new ButtonGroup();
+		choiceGroup.add(oneButton);
+		choiceGroup.add(twoButton);
+		choiceGroup.add(threeButton);
+		choiceGroup.add(fourButton);
 
 		TitledBorder title = BorderFactory.createTitledBorder("Choices");
 		panel.setBorder(title);
@@ -60,30 +71,30 @@ public class MathPanel {
 		cp.add(BorderLayout.NORTH, canvas);
 
 		ButtonListener listener = new ButtonListener(this);
-		aButton.addActionListener(listener);
-		bButton.addActionListener(listener);
-		cButton.addActionListener(listener);
-		dButton.addActionListener(listener);
+		oneButton.addActionListener(listener);
+		twoButton.addActionListener(listener);
+		threeButton.addActionListener(listener);
+		fourButton.addActionListener(listener);
 		intButton.addActionListener(listener);
 		derivButton.addActionListener(listener);
 		limButton.addActionListener(listener);
 		submitButton.addActionListener(listener);
 	}
 
-	public JRadioButton getAButton() {
-		return aButton;
+	public JRadioButton getOneButton() {
+		return oneButton;
 	}
 
-	public JRadioButton getBButton() {
-		return bButton;
+	public JRadioButton getTwoButton() {
+		return twoButton;
 	}
 
-	public JRadioButton getCButton() {
-		return cButton;
+	public JRadioButton getThreeButton() {
+		return threeButton;
 	}
 
-	public JRadioButton getDButton() {
-		return dButton;
+	public JRadioButton getFourButton() {
+		return fourButton;
 	}
 
 	public JButton getIntegralButton() {
@@ -104,6 +115,14 @@ public class MathPanel {
 
 	public JFrame getWindow() {
 		return window;
+	}
+
+	public QuestionState getQuestionState() {
+		return qState;
+	}
+
+	public void setQuestionState(QuestionState qState) {
+		this.qState = qState;
 	}
 
 	public MathCanvas getCanvas() {

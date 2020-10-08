@@ -28,7 +28,7 @@ public class Derivatives extends Math {
 	@Override
 	public void render(Graphics2D g2) {
 		super.render(g2);
-		g2.setColor(Color.red);
+		g2.setColor(Color.blue);
 		g2.setFont(new Font("courier", Font.BOLD, 35));
 		g2.drawString("Derivatives", 160, 50);
 

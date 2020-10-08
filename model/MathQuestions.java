@@ -17,16 +17,16 @@ public class MathQuestions {
 		q1.addChoice("4x^2 + C");
 
 		var q2 = new Integrals("What is the integral of 1 / x?", 4);
-		q2.addChoice("x/x^2 + C");
+		q2.addChoice("x / x^2 + C");
 		q2.addChoice("ln + C");
 		q2.addChoice("e^x + C");
 		q2.addChoice("ln|x| + C");
 
 		var q3 = new Integrals("What is the integral of sin(4x)?", 1);
-		q3.addChoice("-cos(4x)/4 + C");
+		q3.addChoice("-cos(4x) / 4 + C");
 		q3.addChoice("4cos(4x) + C");
-		q3.addChoice("sin(4x)/4 + C");
-		q3.addChoice("-sin(4x)/4 + C");
+		q3.addChoice("sin(4x) / 4 + C");
+		q3.addChoice("-sin(4x) / 4 + C");
 
 		// derivatives
 		var q4 = new Derivatives("What is the 2nd derivative of cos(x)?", 3);
@@ -69,13 +69,6 @@ public class MathQuestions {
 		intBank.add(q1);
 		intBank.add(q2);
 		intBank.add(q3);
-		// intBank.add(q4);
-		// intBank.add(q5);
-		// intBank.add(q6);
-		// intBank.add(q7);
-		// intBank.add(q8);
-		// intBank.add(q9);
-
 		derivBank.add(q4);
 		derivBank.add(q5);
 		derivBank.add(q6);
